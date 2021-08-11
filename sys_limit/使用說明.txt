@@ -1,0 +1,4 @@
+1.將sysy_limt和Redundant_system_UI_v2放在/home/pi/路徑等下，再用chmod 777權限全部打開
+2.在進入Redundant_system_UI_v2執行Redundant_system_UI_v2，
+3.如果要修改QT程式就去點擊Redundant_system_UI_v2.pro，
+4.最後極限值會到/home/pi/sysy_limt/log中的example.txt
