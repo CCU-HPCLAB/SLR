@@ -2,3 +2,5 @@
 2.在進入Redundant_system_UI_v2執行Redundant_system_UI_v2，
 3.如果要修改QT程式就去點擊Redundant_system_UI_v2.pro，
 4.最後極限值會到/home/pi/sysy_limt/log中的example.txt
+5.在build-Redundant_system_UI_v2-Desktop-Release裡面的top.sh是在做抓取極限值的路徑，可以修改到/home/pi/sysy_limt/log中的example.txt
+  ，這樣你就可以做使用，當然你可以設定到你想的路徑。
