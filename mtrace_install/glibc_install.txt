@@ -6,75 +6,7 @@ gcc -g  test.c -o test -Wl,--rpath=/home/pi/glibc-bulid/lib/ -Wl,--dynamic-linke
 
 sudo ln -snf /home/pi/glibc-bulid/lib/libc-2.31.so /usr/lib/x86_64-linux-gnu/libc.so.6
 
-
 sudo ln -snf  /usr/lib/x86_64-linux-gnu/libc-2.31.so /usr/lib/x86_64-linux-gnu/libc.so.6
 
 export MALLOC_TRACE=/home/pi/test/mtrace.out
 
-
-查看glibc的位置
-
-
-
-
-ldd a.out
-
-char buffer[50]; 
-
-sprintf(buffer,"echo @ %s%s%s[%p] >>  echo.txt", info->dli_fname ? : "", info->dli_fname ? ":" : "",buf, caller);
-system(buffer);
-
-            fprintf (mallstream, "@ %s ",
-                   info->dli_fname );
-#!/usr/bin/bash
-sudo apt-get install gcc -y
-sudo apt-get install g++ -y
-wget https://ftp.gnu.org/gnu/glibc/glibc-2.31.tar.gz
-mkdir /home/pi/glibc-bulid/
-tar -xvf /home/pi/glibc-2.31.tar.gz
-cd /home/pi/glibc-bulid/
-sudo apt-get install make -y
-sudo apt-get install gawk -y
-sudo apt-get install bison -y
-../glibc-2.31/configure --prefix=/home/pi/glibc-bulid/
-make -j3
-sudo make install
-
-
-
-
-@ /usr/l= Start
-/dmtcp/libdmtcp_alloc.so:(malloc+0x27)[0x7f6a21930237] + 0x7f6a18000bb0 0x198 /usr/local/lib/dmtcp/libdmtcp_alloc.so
-@ /usr/local/lib/dmtcp/libdmtcp_alloc.so:(free+0x26)[0x7f6a21930456] - 0x7f6a18000bb0
-@ /usr/local/lib/dmtcp/libdmtcp_alloc.so:(malloc+0x27)[0x7f6a21930237] + 0x7f6a18000bb0 0x198 /usr/local/lib/dmtcp/libdmtcp_alloc.so
-@ /usr/local/lib/dmtcp/libdmtcp_alloc.so:(free+0x26)[0x7f6a21930456] - 0x7f6a18000bb0
-@ /usr/local/lib/dmtcp/libdmtcp_alloc.so:(malloc+0x27)[0x7f6a21930237] + 0x55740b1544c0 0xa /usr/local/lib/dmtcp/libdmtcp_alloc.so
-@ /usr/local/lib/dmtcp/libdmtcp_alloc.so:(free+0x26)[0x7f6a21930456] - 0x55740b1544c0
-@ /usr/local/lib/dmtcp/libdmtcp_alloc.so:(malloc+0x27)[0x7f6a21930237] + 0x55740b1544c0 0xa /usr/local/lib/dmtcp/libdmtcp_alloc.so
-@ /usr/local/lib/dmtcp/libdmtcp_alloc.so:(free+0x26)[0x7f6a21930456] - 0x55740b1544c0
-@ /usr/local/lib/dmtcp/libdmtcp_alloc.so:(free+0x26)[0x7f6a21930456] - 0x55740b153c90
-@ /usr/local/lib/dmtcp/libdmtcp_alloc.so:(free+0x26)[0x7f6a21930456] - 0x55740b153870
-@ /usr/local/lib/dmtcp/libdmtcp_alloc.so:(free+0x26)[0x7f6a21930456] - 0x55740b153450
-@ /usr/local/lib/dmtcp/libdmtcp_alloc.so:(free+0x26)[0x7f6a21930456] - 0x55740b1412a0
-@ /usr/local/lib/dmtcp/libdmtcp_alloc.so:(free+0x26)[0x7f6a21930456] - 0x55740b1412c0
-@ /usr/local/lib/dmtcp/libdmtcp_alloc.so:(free+0x26)[0x7f6a21930456] - 0x55740b1540b0
-
-
-
-#include <mcheck.h> // 在程序起始处增加头文件 
-#include <stdio.h>
-#include <stdlib.h>
-
-
-
-int main(void)
-{
-    int *p = (int *)malloc(10);
-
-    char *pw = (char *)malloc(100);
-    char *ps = (char *)malloc(10);
-    free(ps);  
-    free(p);
-    free(p);
-    return 0; 
-}
