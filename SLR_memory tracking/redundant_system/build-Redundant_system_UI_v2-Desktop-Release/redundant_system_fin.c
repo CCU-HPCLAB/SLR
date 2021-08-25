@@ -175,7 +175,7 @@ void *funcall( void *ptr, int *chdpid,void *programpath)//, int *chdflag)
 		printf("%s", buf);  
 	}
 	/*這裡要打開才有接近崩潰的恢復，注意count2要改掉!!!!
-	if(strcmp(buf,"ok")){
+	if(strcmp(buf,"danger")){
 		while(1){
 		
 		//發送訊息
