@@ -228,12 +228,15 @@ int main(int argc, char *argv[])
 			   while (fgets(buf, sizeof buf, pp)) {  
 				   printf("%s", buf);  
 			   }
-			   
-			   //if(strcmp(buf,"ok"))
-			    count++;
+			   /*
+			   你可以將if(strcmp(buf,"danger"))註解，使用if(count==6)做為一個測試，
+			   它會在自動運行6次之後做軟體再生，或是直接使用if(strcmp(buf,"danger"))做使用
+			   count++;
 			   if(count==6)
+			   */
+			   if(strcmp(buf,"danger"))
 			   {
-				   count++;
+				   //count++;
 				   printf("danger\n\n\n");
 				   system("pkill -9 dmtcp");
 				   if((pid = fork()) == 0 ){
